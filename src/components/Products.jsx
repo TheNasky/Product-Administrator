@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import Product from "./Product.jsx";
+import { useRouter } from "next/router";
 
 const Products = () => {
+   const router = useRouter();
+   const handleAddProduct = () => {
+      router.push(`/products/new`);
+   };
    const products = [
       {
          id: 1,
@@ -62,6 +67,18 @@ const Products = () => {
 
    return (
       <section className="pt-8 pb-6 bg-white rounded-3xl">
+         <h1 className="text-3xl font-bold text-center">
+            <span className="text-indigo-600">Productos</span>
+         </h1>
+         <div className="flex justify-end pr-8 mb-4">
+            <button
+               onClick={handleAddProduct}
+               className="text-white bg-indigo-600 rounded-full px-3 py-2 flex items-center hover:bg-indigo-500"
+            >
+               Agregar Producto
+            </button>
+         </div>
+
          <table className="w-full">
             <thead>
                <tr className="border-b-2 border-slate-300 text-black">
